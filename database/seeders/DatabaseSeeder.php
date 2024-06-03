@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Ahmed Mahmoud',
+            'name' => 'LaraERP',
             'email' => 'admin@laraerp.com',
             'password' => '01011263555'
         ]);
