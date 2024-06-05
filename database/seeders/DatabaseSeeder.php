@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\General\World\Country;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\General\Nav\AppSeeder;
+use Database\Seeders\General\Nav\ModuleSeeder;
+use Database\Seeders\General\Nav\SubModuleSeeder;
 use Database\Seeders\General\World\CitySeeder;
 use Database\Seeders\General\World\CountrySeeder;
 use Database\Seeders\General\World\CurrencySeeder;
@@ -27,11 +29,14 @@ class DatabaseSeeder extends Seeder
             'password' => '01011263555'
         ]);
         $this->call([
+            ModuleSeeder::class,
+            SubModuleSeeder::class,
+            AppSeeder::class,
             CountrySeeder::class,
             StateSeeder::class,
             CitySeeder::class,
             PeriodSeeder::class,
-            CurrencySeeder::class
+            CurrencySeeder::class,
         ]);
     }
 }
