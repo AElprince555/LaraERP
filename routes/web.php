@@ -11,5 +11,9 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
-
+Route::get('general/world/countries', function(){
+    return view('countries');
+})
+    ->middleware(['auth'])
+    ->name('general.world.countries');
 require __DIR__.'/auth.php';
