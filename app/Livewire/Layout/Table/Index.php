@@ -14,7 +14,8 @@ class Index extends Component
     public $columns = [];
     public $selected_columns = [];
     public $generalSearch;
-    public function mount(String $modelName) {
+    public function mount(String $modelName): void
+    {
         $this->modelName = "\\App\\Models\\" . $modelName;
 
         // Get table columns
@@ -28,18 +29,19 @@ class Index extends Component
     public function updateColumn($columnKey) {
         $this->selected_columns[$columnKey] = !$this->selected_columns[$columnKey];
     }
-    public function updatedGeneralSearch() {
+    public function updatedGeneralSearch(): void
+    {
         $this->resetPage();
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\View\View|\Illuminate\Contracts\Foundation\Application
     {
         $query= new $this->modelName;
         $query = $query::query();
         foreach ($this->columns as $column){
             $query->orWhere($column, 'LIKE', '%' . $this->generalSearch . '%');
         }
-        $records =$query->paginate(10);
+        $records =$query->orderBy('created_at' , 'desc')->paginate(10);
 
         return view('livewire.layout.table.index', ['records' => $records]);
     }
