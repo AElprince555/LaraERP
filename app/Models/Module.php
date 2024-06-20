@@ -9,6 +9,7 @@ class Module extends Model
     protected $fillable = [
         'name',
         'code',
+        'short',
         'view',
         'permissions',
         'log',

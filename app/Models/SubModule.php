@@ -9,6 +9,7 @@ class SubModule extends Model
     protected $fillable = [
         'name',
         'code',
+        'short',
         'module_id',
         'main_view',
         'permissions',

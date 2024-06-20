@@ -11,6 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('code');
+            $table->string('short');
             $table->foreignIdFor(\App\Models\Module::class)->constrained()->restrictOnDelete()->cascadeOnUpdate();
             $table->string('main_view')->nullable();
             $table->json('permissions')->nullable();
