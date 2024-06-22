@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Database\Seeders\General\Nav\AppSeeder;
+use Database\Seeders\General\Nav\MethodSeeder;
 use Database\Seeders\General\Nav\ModuleSeeder;
 use Database\Seeders\General\Nav\SubModuleSeeder;
 use Database\Seeders\General\World\CitySeeder;
@@ -32,6 +33,7 @@ class DatabaseSeeder extends Seeder
             ModuleSeeder::class,
             SubModuleSeeder::class,
             AppSeeder::class,
+            MethodSeeder::class,
             CountrySeeder::class,
             StateSeeder::class,
             CitySeeder::class,

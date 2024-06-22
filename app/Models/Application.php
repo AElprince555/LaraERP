@@ -9,6 +9,7 @@ class Application extends Model
     protected $fillable = [
         'name',
         'code',
+        'short',
         'sub_module_id',
         'main_view',
         'controller',

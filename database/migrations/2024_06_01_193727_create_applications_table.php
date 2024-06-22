@@ -9,8 +9,9 @@ return new class extends Migration {
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('code');
+            $table->string('name')->unique();
+            $table->string('code')->unique();
+            $table->string('short')->unique();
             $table->foreignIdFor(\App\Models\SubModule::class)->constrained()->restrictOnDelete()->cascadeOnUpdate();
             $table->string('main_view')->nullable();
             $table->string('controller')->nullable();

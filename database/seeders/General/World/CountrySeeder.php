@@ -10,7 +10,7 @@ class CountrySeeder extends Seeder{
     {
         Country::insert([
             [
-                'name'=>'egypt',
+                'name'=>'Egypt',
                 'code'=>'EG',
                 'iso_code'=>'EG-EGY-818',
                 'short'=>'EGY'

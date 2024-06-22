@@ -13,9 +13,14 @@
                             <h3 class="text-lg leading-6 font-medium text-black mb-4">Sub Modules</h3>
                             <div class="grid grid-cols-4 gap-4">
                                 @foreach($module->subModules as $sub)
-                                    <div class="border border-gray-300 bg-white p-4 rounded-lg flex items-center space-x-2 shadow-sm">
-                                        <h2 class="text-gray-700 text-sm">{{strtoupper($sub->name)}}</h2>
-                                    </div>
+                                    <a href="{{route($sub->short)}}">
+                                        <div
+                                            class="border border-gray-300 bg-white p-4 rounded-lg flex items-center
+                                        space-x-2 shadow-sm text-gray-700 text-sm hover:text-white hover:bg-gray-700"
+                                        >
+                                            <h2 >{{strtoupper($sub->name)}}</h2>
+                                        </div>
+                                    </a>
                                 @endforeach
                             </div>
                         </div>
@@ -23,9 +28,14 @@
                             <h3 class="text-lg leading-6 font-medium text-black mb-4">Applications</h3>
                             <div class="grid grid-cols-4 gap-4">
                                 @foreach($module->applications as $app)
-                                    <div class="border border-gray-300 bg-white p-4 rounded-lg flex items-center space-x-2 shadow-sm">
-                                        <h2 class="text-gray-700 text-sm">{{strtoupper($app->name)}}</h2>
-                                    </div>
+                                    <a href="{{route($app->short)}}">
+                                        <div
+                                            class="border border-gray-300 bg-white p-4 rounded-lg flex items-center
+                                        space-x-2 text-gray-700 text-sm shadow-sm hover:text-white hover:bg-gray-700"
+                                        >
+                                            <h2 >{{strtoupper($app->name)}}</h2>
+                                        </div>
+                                    </a>
                                 @endforeach
                             </div>
                         </div>

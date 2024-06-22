@@ -1,7 +1,8 @@
 <div>
     <x-modal
         name="nav-modal"
-        {{--:show="$errors->isNotEmpty()"--}} :show="true"
+        :show="$errors->isNotEmpty()"
+        :show="false"
         focusable
     >
         <div class="p-3 pt-5">
@@ -38,17 +39,22 @@
                             >For: {{$selectedModule->name}}</span>
                             <ul class="mt-5  grid grid-cols-1">
                                 @foreach($subModules as $subModule)
-                                    <button
-                                        type="button"
-                                        wire:key="{{$subModule->id}}"
-                                        wire:click="selectSubModule({{$subModule->id}})"
-                                    >
-                                        <li
-                                            class="text-left mt-2 capitalize text-blue-600 underline"
+                                    <div>
+                                        <button
+                                            type="button"
+                                            wire:key="{{$subModule->id}}"
+                                            wire:click="selectSubModule({{$subModule->id}})"
+                                        >
+                                            <li
+                                                class="text-left mt-2 capitalize text-blue-600 underline"
 
-                                            title="{{$subModule->code}}"
-                                        >{{\Illuminate\Support\Str::words($subModule->name,3)}}</li>
-                                    </button>
+                                                title="{{$subModule->code}}"
+                                            >{{\Illuminate\Support\Str::words($subModule->name,3)}}</li>
+                                        </button>
+
+                                        <a href="{{route($subModule->short)}}">
+                                            <i class="fa-solid fa-link"></i>
+                                        </a></div>
                                 @endforeach
                             </ul>
                         @endif
@@ -61,17 +67,22 @@
                             >For: {{$selectedSubModule->name}}</span>
                             <ul class="mt-5  grid grid-cols-1">
                                 @foreach($applications as $application)
-                                    <button
-                                        type="button"
-                                        wire:key="{{$application->id}}"
-                                        wire:click="selectSubModule({{$application->id}})"
-                                    >
-                                        <li
-                                            class="text-left mt-2 capitalize text-blue-600 underline"
+                                    <div>
+                                        <button
+                                            type="button"
+                                            wire:key="{{$application->id}}"
+                                            wire:click="selectSubModule({{$application->id}})"
+                                        >
+                                            <li
+                                                class="text-left mt-2 capitalize text-blue-600 underline"
 
-                                            title="{{$application->code}}"
-                                        >{{\Illuminate\Support\Str::words($application->name,3)}}</li>
-                                    </button>
+                                                title="{{$application->code}}"
+                                            >{{\Illuminate\Support\Str::words($application->name,3)}}</li>
+                                        </button>
+                                        <a href="{{route($application->short)}}">
+                                            <i class="fa-solid fa-link"></i>
+                                        </a></div>
+
                                 @endforeach
                             </ul>
                         @endif

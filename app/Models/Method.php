@@ -9,6 +9,7 @@ class Method extends Model
     protected $fillable = [
         'name',
         'code',
+        'short',
         'disc',
         'application_id',
         'main_view',
