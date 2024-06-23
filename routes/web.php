@@ -24,13 +24,15 @@ Route::middleware(['auth', 'verified'])->group(function ()use ($modules,$subModu
             return view('pages.subModules', ['subModule' => $subModule]);
         } )->name($subModule->short);
     }
-    foreach ($apps as $application) {
+    /*foreach ($apps as $application) {
         Route::get(str_replace('.','/',$application->short) ,function () use ($application) {
             return view('pages.'.$application->short, ['application' => $application]);
         })->name($application->short);
-    }
+    }*/
 });
+Route::get('general/world/countries',\App\Models\Method::where('code','GM-WM-CM-V')->first()->component);
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 require __DIR__.'/auth.php';
+

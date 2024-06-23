@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Layout\Table;
 
+use App\Models\Application;
+use JetBrains\PhpStorm\NoReturn;
 use Livewire\Component;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
@@ -10,20 +12,23 @@ use Livewire\WithPagination;
 class Index extends Component
 {
     use WithPagination;
-    public $modelName;
+    public $app;
     public $columns = [];
     public $selected_columns = [];
+    public $applicationModule;
     public $generalSearch;
-    public function mount(String $modelName): void
+    #[NoReturn]
+    public function mount(String $app): void
     {
-        $this->modelName = "\\App\\Models\\" . $modelName;
-
-        // Get table columns
-        $columns = Schema::getColumnListing((new $this->modelName)->getTable());
-        $this->columns = array_filter($columns, function($column) {
-            return !in_array($column, ['id', 'created_at', 'updated_at' , 'permissions' , 'log' , 'settings']);
+        $this->app = "\\App\\Models\\" . $app;
+        $app = new $this->app();
+        $this->applicationModule = Application::find($app->application());
+        $showColumns = $this->applicationModule->settings['show'];
+        $collection = collect($showColumns);
+        $sorting = $collection->sortBy(function ($value , $key) {
+            return array_search($key , $this->applicationModule->settings['sorting']);
         });
-        $this->selected_columns = array_fill_keys($this->columns, true);
+        $this->selected_columns = $sorting;
     }
 
     public function updateColumn($columnKey) {
@@ -36,7 +41,7 @@ class Index extends Component
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\View\View|\Illuminate\Contracts\Foundation\Application
     {
-        $query= new $this->modelName;
+        $query= new $this->app;
         $query = $query::query();
         foreach ($this->columns as $column){
             $query->orWhere($column, 'LIKE', '%' . $this->generalSearch . '%');

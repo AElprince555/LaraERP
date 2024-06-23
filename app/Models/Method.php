@@ -10,6 +10,8 @@ class Method extends Model
         'name',
         'code',
         'short',
+        'component',
+        'view',
         'disc',
         'application_id',
         'main_view',

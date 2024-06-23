@@ -12,7 +12,9 @@ return new class extends Migration {
             $table->string('name')->unique();
             $table->string('code')->unique();
             $table->string('short')->unique();
-            $table->string('disc')->nullable();
+            $table->string('disc');
+            $table->string('component');
+            $table->string('view');
             $table->foreignIdFor(\App\Models\Application::class)->constrained()->restrictOnDelete()->cascadeOnUpdate();
             $table->string('main_view')->nullable();
             $table->json('permissions')->nullable();
