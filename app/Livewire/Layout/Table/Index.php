@@ -4,9 +4,8 @@ namespace App\Livewire\Layout\Table;
 
 use App\Models\Application;
 use JetBrains\PhpStorm\NoReturn;
+use Livewire\Attributes\On;
 use Livewire\Component;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Schema;
 use Livewire\WithPagination;
 
 class Index extends Component
@@ -30,8 +29,13 @@ class Index extends Component
         });
         $this->selected_columns = $sorting;
     }
-
-    public function updateColumn($columnKey) {
+    #[On('record-created')]
+    public function recordCreated()
+    {
+        $this->render();
+    }
+    public function updateColumn($columnKey): void
+    {
         $this->selected_columns[$columnKey] = !$this->selected_columns[$columnKey];
     }
     public function updatedGeneralSearch(): void

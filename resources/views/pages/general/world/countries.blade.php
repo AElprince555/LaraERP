@@ -25,8 +25,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="text-gray-900">
-                    <div class="min-h-screen flex items-start justify-center mt-6">
-                        @livewire('layout.table' , ['modelName' => 'General\\World\\Country'])
+                    <div class="min-h-screen  mt-6">
+                        <div class="flex place-content-end px-6 my-3">
+                            <livewire:methods.general.world.countries.create/>
+                        </div>
+                        <div class="">
+                            @livewire('layout.table' , ['app' => 'General\\World\\Country'])
+                        </div>
                     </div>
                 </div>
             </div>

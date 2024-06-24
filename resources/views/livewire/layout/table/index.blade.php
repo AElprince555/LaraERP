@@ -2,7 +2,6 @@
     <div class="my-2" x-data="{ open: false }">
         <x-primary-button
             @click="open = !open"
-            class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
         >Toggle Columns
         </x-primary-button>
 
