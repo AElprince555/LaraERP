@@ -13,19 +13,19 @@ class FormModal extends Component
     public Country $country;
     public $show=false;
     public CountryForm $form;
-    public function mount($country = null)
+    public function mount( $id=null)
     {
-        if ($country) {
-            $this->id = $country->id;
-            $this->form->id = $country->id;
-            $this->form->name = $country->name;
-            $this->form->code = $country->code;
-            $this->form->iso_code = $country->iso_code;
-            $this->form->flag = $country->flag;
-            $this->form->short= $country->short;
-            $this->form->permissions = $country->permissions;
-            $this->form->log = $country->log;
-            $this->form->settings = $country->settings;
+        if ($id){
+            $this->country = Country::find($id);
+            $this->form->id = $this->country->id;
+            $this->form->name = $this->country->name;
+            $this->form->code = $this->country->code;
+            $this->form->iso_code = $this->country->iso_code;
+            $this->form->flag = $this->country->flag;
+            $this->form->short= $this->country->short;
+            $this->form->permissions = $this->country->permissions;
+            $this->form->log = $this->country->log;
+            $this->form->settings = $this->country->settings;
         }
     }
     public function save(): void

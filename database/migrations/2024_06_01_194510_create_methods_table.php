@@ -16,7 +16,6 @@ return new class extends Migration {
             $table->string('component');
             $table->string('view');
             $table->foreignIdFor(\App\Models\Application::class)->constrained()->restrictOnDelete()->cascadeOnUpdate();
-            $table->string('main_view')->nullable();
             $table->json('permissions')->nullable();
             $table->json('log')->nullable();
             $table->json('settings')->nullable();

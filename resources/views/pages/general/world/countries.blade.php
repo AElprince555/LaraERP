@@ -27,7 +27,7 @@
                 <div class="text-gray-900">
                     <div class="min-h-screen  mt-6">
                         <div class="flex place-content-end px-6 my-3">
-                            <livewire:methods.general.world.countries.create/>
+                            <livewire:methods.general.world.countries.create />
                         </div>
                         <div class="">
                             @livewire('layout.table' , ['app' => 'General\\World\\Country'])

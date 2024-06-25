@@ -1,5 +1,8 @@
 <div class="w-full px-6  overflow-x-auto">
-    <div class="my-2" x-data="{ open: false }">
+    <div
+        class="my-2"
+        x-data="{ open: false }"
+    >
         <x-primary-button
             @click="open = !open"
         >Toggle Columns
@@ -38,7 +41,7 @@
                 @foreach($selected_columns as $key => $column)
                     @if($column)
                         <th
-                            wire:key="$key"
+                            wire:key="{{$key}}"
                             scope="col"
                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                         >
@@ -51,11 +54,14 @@
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
             @foreach($records as $record)
-                <tr wire:key="$record->id">
+                <tr wire:key="{{$record->id}}">
                     <td class="px-6 py-4 whitespace-nowrap">{{ ($records ->currentpage()-1) * $records ->perpage() + $loop->index + 1 }}</td>
                     @foreach($selected_columns as $key=>$column)
                         @if($column)
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td
+                                class="px-6 py-4 whitespace-nowrap"
+                                wire:key="{{$key}}"
+                            >
                                 <div class="text-sm text-gray-500">{{ $record->$key }}</div>
                             </td>
                         @endif
@@ -66,17 +72,22 @@
                                 <x-menu.button class="rounded hover:bg-gray-100">
                                     <x-icon.ellipsis-vertical/>
                                 </x-menu.button>
-                                <x-menu.items>
-                                    <x-menu.close>
-                                        <x-menu.item>Delete</x-menu.item>
+                                <x-menu.items >
+                                    <x-menu.close >
+                                        <x-menu.item >
+                                            @livewire($delete , ['id'=>$record->id ] , key($record->id))
+                                        </x-menu.item>
                                     </x-menu.close>
                                     <x-menu.close>
-                                        <x-menu.item>Update</x-menu.item>
+                                        <x-menu.item >
+                                            @livewire($edit , ['id'=>$record->id] , key($record->id))
+                                        </x-menu.item>
                                     </x-menu.close>
                                 </x-menu.items>
                             </x-menu>
                         </div>
                     </td>
+                    @livewire($form , ['id'=>$record->id] , key($record->id))
                 </tr>
             @endforeach
             </tbody>

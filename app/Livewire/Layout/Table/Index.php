@@ -16,12 +16,18 @@ class Index extends Component
     public $selected_columns = [];
     public $applicationModule;
     public $generalSearch;
+    public $delete;
+    public $edit;
+    public $form;
     #[NoReturn]
     public function mount(String $app): void
     {
         $this->app = "\\App\\Models\\" . $app;
         $app = new $this->app();
         $this->applicationModule = Application::find($app->application());
+        $this->delete =$this->applicationModule->methods->where('disc','delete')->first()->view;
+        $this->edit =$this->applicationModule->methods->where('disc','edit')->first()->view;
+        $this->form =$this->applicationModule->methods->where('disc','form')->first()->view;
         $showColumns = $this->applicationModule->settings['show'];
         $collection = collect($showColumns);
         $sorting = $collection->sortBy(function ($value , $key) {
@@ -30,7 +36,8 @@ class Index extends Component
         $this->selected_columns = $sorting;
     }
     #[On('record-created')]
-    public function recordCreated()
+    #[On('record-deleted')]
+    public function recordUpdate()
     {
         $this->render();
     }

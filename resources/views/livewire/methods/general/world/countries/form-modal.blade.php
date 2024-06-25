@@ -1,5 +1,5 @@
-@props(['id'=>null , 'country'=>null])
-<div>
+@props(['id'=>null ])
+<div {{$attributes}}>
     <x-modal
         name='country-form-modal{{($id) ? "-$id" : ""}}'
         :show="$errors->isNotEmpty()"
