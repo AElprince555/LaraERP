@@ -110,7 +110,7 @@
             <div class="mt-5">
                 <x-primary-button
                     class="mr-2"
-                    wire:click="{{($id) ? 'update' : 'save'}}"
+                    wire:click="{{($id) ? 'edit' : 'save'}}"
                     type="submit"
                 >
                     {{$id ? 'Update' :'Save'}}

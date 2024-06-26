@@ -54,9 +54,9 @@ class CountryForm extends Form
             ($this->id)],
             'flag' => ['nullable' , 'url'],
             'short' => 'nullable',
-            'permissions' => ['nullable' , 'json'],
-            'log' => ['nullable','json'],
-            'settings' => ['nullable','json'],
+            'permissions' => ['nullable' , 'array'],
+            'log' => ['nullable' , 'array'],
+            'settings' => ['nullable','array'],
         ];
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Country extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'code',
@@ -20,18 +21,17 @@ class Country extends Model
         'settings',
     ];
 
-    protected function casts(): array
+    protected $casts = [
+        'permissions' => 'array',
+        'log' => 'array',
+        'settings' => 'array'
+    ];
+
+    public static function application(): string
     {
-        return [
-            'permissions' => 'array',
-            'log' => 'array',
-            'settings' => 'array',
-        ];
+        return Application::where('code', 'GM-WM-CM')->first()->id;
     }
-    public static function application() :string
-    {
-        return Application::where('code','GM-WM-CM')->first()->id;
-    }
+
     public function states(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(State::class, 'country_id');
@@ -39,6 +39,6 @@ class Country extends Model
 
     public function cities(): \Illuminate\Database\Eloquent\Relations\HasManyThrough
     {
-        return $this->hasManyThrough(City::class , State::class);
+        return $this->hasManyThrough(City::class, State::class);
     }
 }
