@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class SubModule extends Model
 {
@@ -10,8 +11,11 @@ class SubModule extends Model
         'name',
         'code',
         'short',
+        'disc',
         'module_id',
-        'main_view',
+        'view',
+        'component',
+        'eloquent',
         'permissions',
         'log',
         'settings',
@@ -36,8 +40,8 @@ class SubModule extends Model
         return $this->hasMany(Application::class, 'sub_module_id');
     }
 
-    public function methods(): \Illuminate\Database\Eloquent\Relations\HasManyThrough
+    public function methods(): HasMany
     {
-        return $this->hasManyThrough(Method::class , Application::Class);
+        return $this->hasMany(Method::class, 'sub_module_id');
     }
 }

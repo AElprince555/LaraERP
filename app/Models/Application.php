@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Application extends Model
 {
@@ -10,9 +12,11 @@ class Application extends Model
         'name',
         'code',
         'short',
+        'disc',
         'sub_module_id',
-        'main_view',
-        'controller',
+        'module_id',
+        'view',
+        'component',
         'eloquent',
         'permissions',
         'log',
@@ -28,13 +32,18 @@ class Application extends Model
         ];
     }
 
-    public function subModule(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function subModule(): BelongsTo
     {
         return $this->belongsTo(SubModule::class);
     }
 
-    public function methods(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function methods(): HasMany
     {
         return $this->hasMany(Method::class, 'application_id');
+    }
+
+    public function module(): BelongsTo
+    {
+        return $this->belongsTo(Module::class);
     }
 }

@@ -9,10 +9,13 @@ return new class extends Migration {
     {
         Schema::create('modules', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('code');
-            $table->string('short');
-            $table->string('view')->nullable();
+            $table->string('name')->unique();
+            $table->string('code')->unique();
+            $table->string('short')->unique();
+            $table->string('disc');
+            $table->string('view')->unique();
+            $table->string('component')->unique();
+            $table->string('eloquent')->nullable();
             $table->json('permissions')->nullable();
             $table->json('log')->nullable();
             $table->json('settings')->nullable();

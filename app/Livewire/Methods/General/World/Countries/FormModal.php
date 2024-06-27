@@ -6,28 +6,32 @@ use App\Livewire\Forms\General\World\CountryForm;
 use App\Models\Application;
 use App\Models\General\World\Country;
 use Illuminate\Support\Str;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class FormModal extends Component
 {
-    public $id;
-    public Country $country;
-    public $show = false;
     public CountryForm $form;
+    public Application $application ;
 
-    public function mount($id = null)
+    public function mount()
     {
-        if ($id) {
-            $this->country = Country::find($id);
-            $this->form->id = $this->country->id;
-            $this->form->name = $this->country->name;
-            $this->form->code = Str::after($this->country->code, Application::find(Country::application())->code . '-');
-            $this->form->iso_code = $this->country->iso_code;
-            $this->form->flag = $this->country->flag;
-            $this->form->short = $this->country->short;
-            $this->form->permissions = $this->country->permissions;
-            $this->form->log = $this->country->log;
-            $this->form->settings = $this->country->settings;
+        $this->application = Application::where('short','country')->first();
+    }
+    #[On('edit_request')]
+    public function edit_request(Country $country = null)
+    {
+        $this->form->reset();
+        if ($country){
+            $this->form->id = $country->id;
+            $this->form->name = $country->name;
+            $this->form->code = Str::after($country->code, Application::find(Country::application())->code . '-');
+            $this->form->iso_code = $country->iso_code;
+            $this->form->flag = $country->flag;
+            $this->form->short = $country->short;
+            $this->form->permissions = $country->permissions;
+            $this->form->log = $country->log;
+            $this->form->settings = $country->settings;
         }
     }
 

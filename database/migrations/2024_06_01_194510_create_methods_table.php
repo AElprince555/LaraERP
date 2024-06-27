@@ -11,11 +11,14 @@ return new class extends Migration {
             $table->id();
             $table->string('name')->unique();
             $table->string('code')->unique();
-            $table->string('short')->unique();
+            $table->string('short');
             $table->string('disc');
-            $table->string('component');
-            $table->string('view');
             $table->foreignIdFor(\App\Models\Application::class)->constrained()->restrictOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(\App\Models\SubModule::class)->constrained()->restrictOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(\App\Models\Module::class)->constrained()->restrictOnDelete()->cascadeOnUpdate();
+            $table->string('view')->unique();
+            $table->string('component')->unique();
+            $table->string('eloquent')->nullable();
             $table->json('permissions')->nullable();
             $table->json('log')->nullable();
             $table->json('settings')->nullable();

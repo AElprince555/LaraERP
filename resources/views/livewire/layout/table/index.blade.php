@@ -87,7 +87,7 @@
                             </x-menu>
                         </div>
                     </td>
-                    @livewire($form , ['id'=>$record->id] , key($record->id))
+                    @livewire($form , ['id'=>$record->id] )
                 </tr>
             @endforeach
             </tbody>

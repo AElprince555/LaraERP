@@ -1,7 +1,7 @@
 @props(['id'=>null ])
 <div {{$attributes}}>
     <x-modal
-        name='country-form-modal{{($id) ? "-$id" : ""}}'
+        name={{$application->code}}.'-form-modal'
         :show="$errors->isNotEmpty()"
         :show="$show"
         focusable

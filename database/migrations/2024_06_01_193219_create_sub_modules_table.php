@@ -5,15 +5,18 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    public function up()
+    public function up(): void
     {
         Schema::create('sub_modules', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('code');
-            $table->string('short');
+            $table->string('name')->unique();
+            $table->string('code')->unique();
+            $table->string('short')->unique();
+            $table->string('disc');
             $table->foreignIdFor(\App\Models\Module::class)->constrained()->restrictOnDelete()->cascadeOnUpdate();
-            $table->string('main_view')->nullable();
+            $table->string('view')->unique();
+            $table->string('component')->unique();
+            $table->string('eloquent')->nullable();
             $table->json('permissions')->nullable();
             $table->json('log')->nullable();
             $table->json('settings')->nullable();
