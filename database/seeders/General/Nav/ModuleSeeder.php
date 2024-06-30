@@ -24,9 +24,9 @@ class ModuleSeeder extends Seeder
             [
                 'name' => 'human resource module',
                 'code' => 'HR',
-                'short' => 'human_resource',
+                'short' => 'human-resource',
                 'disc' => 'this module for handle all human resource data in application',
-                'view' => 'human_resource',
+                'view' => 'human-resource',
                 'component' => '\HumanResource',
                 'permissions' => null,
                 'log' => json_encode(['created' => ['time' => now(), 'created_by' => 'system']]),

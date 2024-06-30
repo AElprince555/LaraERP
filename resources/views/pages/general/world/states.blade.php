@@ -27,12 +27,12 @@
                 <div class="text-gray-900">
                     <div class="min-h-screen  mt-6">
                         <div class="flex place-content-end px-6 my-3">
-                           <x-primary-button>
-                               <livewire:methods.general.world.countries.create />
-                           </x-primary-button>
+                            <x-primary-button>
+{{--                                <livewire:methods.general.world.countries.create />--}}
+                            </x-primary-button>
                         </div>
                         <div class="">
-                            @livewire('layout.table' , ['app' => 'General\\World\\Country'])
+                            @livewire('layout.table' , ['app' => 'General\\World\\State'])
                         </div>
                     </div>
                 </div>

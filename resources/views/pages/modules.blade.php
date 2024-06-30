@@ -13,7 +13,7 @@
                             <h3 class="text-lg leading-6 font-medium text-black mb-4">Sub Modules</h3>
                             <div class="grid grid-cols-4 gap-4">
                                 @foreach($module->subModules as $sub)
-                                    <a href="{{route($sub->short)}}">
+                                    <a href="{{route($sub->code)}}">
                                         <div
                                             class="border border-gray-300 bg-white p-4 rounded-lg flex items-center
                                         space-x-2 shadow-sm text-gray-700 text-sm hover:text-white hover:bg-gray-700"
@@ -28,7 +28,7 @@
                             <h3 class="text-lg leading-6 font-medium text-black mb-4">Applications</h3>
                             <div class="grid grid-cols-4 gap-4">
                                 @foreach($module->applications as $app)
-                                    <a href="{{route($app->short)}}">
+                                    <a href="{{route($app->code)}}">
                                         <div
                                             class="border border-gray-300 bg-white p-4 rounded-lg flex items-center
                                         space-x-2 text-gray-700 text-sm shadow-sm hover:text-white hover:bg-gray-700"

@@ -29,7 +29,7 @@ class Country extends Model
 
     public static function application(): string
     {
-        return Application::where('code', 'GM-WM-CM')->first()->id;
+        return Application::where('code', 'GM-WSM-CA')->first()->id;
     }
 
     public function states(): \Illuminate\Database\Eloquent\Relations\HasMany

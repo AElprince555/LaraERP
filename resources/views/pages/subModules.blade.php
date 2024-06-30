@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <a href="{{route($subModule->module->short)}}"
+            <a href="{{route($subModule->module->code)}}"
                class=" hover:underline
             ">{{__(strtoupper($subModule->module->name))}}</a>
             /
@@ -17,7 +17,7 @@
                             <h3 class="text-lg leading-6 font-medium text-black mb-4">Applications</h3>
                             <div class="grid grid-cols-4 gap-4">
                                 @foreach($subModule->applications as $app)
-                                    <a href="{{route($app->short)}}">
+                                    <a href="{{route($app->code)}}">
                                         <div class="border border-gray-300 bg-white p-4 rounded-lg flex items-center
                                         space-x-2 shadow-sm text-gray-700 text-sm hover:text-white hover:bg-gray-700">
                                             <h2 >{{strtoupper($app->name)}}</h2>

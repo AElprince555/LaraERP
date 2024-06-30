@@ -11,7 +11,6 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('code');
-            $table->string('iso_code')->nullable();
             $table->string('short')->nullable();
             $table->foreignIdFor(\App\Models\General\World\Country::class)->constrained()->restrictOnDelete()->cascadeOnUpdate();
             $table->json('permissions')->nullable();

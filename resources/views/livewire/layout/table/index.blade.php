@@ -68,6 +68,7 @@
                     @endforeach
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="flex items-center justify-center text-center">
+
                             <x-menu>
                                 <x-menu.button class="rounded hover:bg-gray-100">
                                     <x-icon.ellipsis-vertical/>
@@ -75,19 +76,18 @@
                                 <x-menu.items >
                                     <x-menu.close >
                                         <x-menu.item >
-                                            @livewire($delete , ['id'=>$record->id ] , key($record->id))
+                                            @livewire('methods.'.$delete , ['id'=>$record->id ] , key($record->code))
                                         </x-menu.item>
                                     </x-menu.close>
                                     <x-menu.close>
                                         <x-menu.item >
-                                            @livewire($edit , ['id'=>$record->id] , key($record->id))
+                                            @livewire('methods.'.$edit , ['id'=>$record->id] , key($record->id))
                                         </x-menu.item>
                                     </x-menu.close>
                                 </x-menu.items>
                             </x-menu>
                         </div>
                     </td>
-                    @livewire($form , ['id'=>$record->id] )
                 </tr>
             @endforeach
             </tbody>
@@ -96,5 +96,5 @@
     <div class="mx-5">
         {{ $records->links() }}
     </div>
-
+    @livewire('methods.'.$form)
 </div>

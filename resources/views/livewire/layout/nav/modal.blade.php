@@ -24,7 +24,7 @@
                                             title="{{$module->code}}"
                                         >{{\Illuminate\Support\Str::words($module->name,3)}}</li>
                                     </button>
-                                    <a href="{{route($module->short)}}">
+                                    <a href="{{route($module->code)}}">
                                         <i class="fa-solid fa-link"></i>
                                     </a>
                                 </div>
@@ -52,7 +52,7 @@
                                             >{{\Illuminate\Support\Str::words($subModule->name,3)}}</li>
                                         </button>
 
-                                        <a href="{{route($subModule->short)}}">
+                                        <a href="{{route($subModule->code)}}">
                                             <i class="fa-solid fa-link"></i>
                                         </a></div>
                                 @endforeach
@@ -79,7 +79,7 @@
                                                 title="{{$application->code}}"
                                             >{{\Illuminate\Support\Str::words($application->name,3)}}</li>
                                         </button>
-                                        <a href="{{route($application->short)}}">
+                                        <a href="{{route($application->code)}}">
                                             <i class="fa-solid fa-link"></i>
                                         </a></div>
 
